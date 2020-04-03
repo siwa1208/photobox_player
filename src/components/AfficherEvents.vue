@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <h1>components Home</h1>
+        <h1>je suis dans le components Events</h1>
     </div>
 </template>
 
