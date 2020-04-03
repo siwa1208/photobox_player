@@ -1,26 +1,13 @@
 <template>
-    <div id="app">
-        <b-card title="Card Title" no-body>
-            <b-card-header header-tag="nav">
-            <b-nav card-header tabs>
-                <!-- <b-nav-item>'s with child routes. Note the trailing slash on the first <b-nav-item> -->
-                <b-nav-item to="/" exact exact-active-class="active">Accueil</b-nav-item>
-                <b-nav-item to="/Photos" exact exact-active-class="active">Photos</b-nav-item>
-                <b-nav-item to="/Events" exact exact-active-class="active">Evènements</b-nav-item>
-            </b-nav>
-            </b-card-header>
-        </b-card>
-        <img alt="Vue logo" src="./assets/logo.png">
+    <div id="Photos">
         <silent-box :gallery="gallery"></silent-box>
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
 
     export default {
-        name: 'App',
+        name: 'Photos',
         data() {
             return {
                 gallery: [
@@ -46,18 +33,7 @@
             }
         },
         components: {
-            HelloWorld
+
         }
     }
 </script>
-
-<style>
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>
