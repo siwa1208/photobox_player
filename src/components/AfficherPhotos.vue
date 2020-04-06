@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <silent-box :gallery="gallery"></silent-box>
-        <button class="button is-success" v-on:click="amineZemel"> Chercher des images</button>
+        <button class="button is-success" v-on:click="fetchImage"> Chercher une images</button>
+        <button class="button is-success" v-on:click="fetchImages"> Chercher des images</button>
     </div>
 </template>
 
@@ -10,7 +11,7 @@
 
     export default {
         methods: {
-            amineZemel: function () {
+            fetchImage: function () {
                 axios
                     .get('https://dog.ceo/api/breeds/image/random', {})
                     .then(response => (this.gallery.push({
@@ -18,13 +19,28 @@
                         description: 'pinche',
                         thumbnailWidth: '220px'
                     })))
+            },
+            fetchImages: function () {
+                axios
+                    .get('https://dog.ceo/api/breeds/image/random/5', {})
+                    .then(response => {
+                        let Images = response.data.message;
+                        Images.forEach(Image => {
+                            this.gallery.push({
+                                src: Image,
+                                description: 'pinche',
+                                thumbnailWidth: '220px'
+                            })
+                        })
+                    })
             }
         },
         data() {
             return {
                 gallery: []
             }
-        },
+        }
+        ,
         props: {
             msg: String
         }

@@ -3,22 +3,20 @@ import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 
 const vp = new VuexPersist({
-	key : 'store',
-	storage : window.localStorage
+    key: 'store',
+    storage: window.localStorage
 });
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  plugins : [vp.plugin],
+    plugins: [vp.plugin],
 
-  state: {
-   
-  },
+    state: {},
 
-  mutations: {
-   
-  },
-  actions: {},
-  modules: {}
+    mutations: {},
+
+    actions: {},
+    
+    modules: {}
 })
