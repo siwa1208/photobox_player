@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <silent-box :gallery="gallery"></silent-box>
-        <button class="button is-success" v-on:click="fetchImage"> Chercher une images</button>
         <button class="button is-success" v-on:click="fetchImages"> Chercher des images</button>
     </div>
 </template>
@@ -11,24 +10,15 @@
 
     export default {
         methods: {
-            fetchImage: function () {
+            fetchImages() {
                 axios
-                    .get('https://dog.ceo/api/breeds/image/random', {})
-                    .then(response => (this.gallery.push({
-                        src: response.data.message,
-                        description: 'pinche',
-                        thumbnailWidth: '220px'
-                    })))
-            },
-            fetchImages: function () {
-                axios
-                    .get('https://dog.ceo/api/breeds/image/random/5', {})
+                    .get('https://apiphotobox.tallium.tech/event/pictures/e0c003e624a09554e9a7578d19b5d7cf35c391a6100281347b31edeeaf91d697', {})
                     .then(response => {
-                        let Images = response.data.message;
+                        let Images = response.data.pictures;
                         Images.forEach(Image => {
                             this.gallery.push({
-                                src: Image,
-                                description: 'pinche',
+                                src: 'https://apiphotobox.tallium.tech' + Image.URI,
+                                description: Image.id,
                                 thumbnailWidth: '220px'
                             })
                         })
@@ -39,8 +29,7 @@
             return {
                 gallery: []
             }
-        }
-        ,
+        },
         props: {
             msg: String
         }
