@@ -9,7 +9,7 @@
                 <b-navbar-nav>
                     <b-nav-item to="/">Home</b-nav-item>
                     <b-nav-item to="/Photos">Photos</b-nav-item>
-                    <b-nav-item to="/Events">Events</b-nav-item>                   
+                    <b-nav-item to="/Events">Events</b-nav-item>              
                 </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
@@ -24,8 +24,5 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-    }
-    .variant {
-        color : #400c61f7;
     }
 </style>
