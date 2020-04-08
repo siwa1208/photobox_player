@@ -12,9 +12,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     plugins: [vp.plugin],
 
-    state: {},
+    state: {
+        images : '',
+        token : ''
+    },
 
-    mutations: {},
+    mutations: {
+        getToken(state, token){
+            state.token = token
+        },
+        
+        getImages(state, images){
+            state.images = images
+          }
+    },
 
     actions: {},
     
