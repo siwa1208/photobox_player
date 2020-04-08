@@ -6,11 +6,10 @@
 
 <script>
     import AfficherPhotos from '@/components/AfficherPhotos.vue'
-
     export default {
-        name: 'home',
+        name: 'photos',
         components: {
-            AfficherPhotos
+            AfficherPhotos,
         },
         methods: {}
     }

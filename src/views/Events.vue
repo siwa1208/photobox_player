@@ -8,7 +8,7 @@
     import AfficherEvents from '@/components/AfficherEvents.vue'
 
     export default {
-        name: 'home',
+        name: 'events',
         components: {
             AfficherEvents
         },

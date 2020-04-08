@@ -1,12 +1,18 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/Photos">Photos</router-link>
-            |
-            <router-link to="/Events">Events</router-link>
-        </div>
+    <div id="app">    
+            <b-navbar toggleable="lg" type="light">
+                <b-navbar-brand to="/">Photobox</b-navbar-brand>
+
+                <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+                <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav>
+                    <b-nav-item to="/">Home</b-nav-item>
+                    <b-nav-item to="/Photos">Photos</b-nav-item>
+                    <b-nav-item to="/Events">Events</b-nav-item>                   
+                </b-navbar-nav>
+                </b-collapse>
+            </b-navbar>
         <router-view/>
     </div>
 </template>
@@ -19,17 +25,7 @@
         text-align: center;
         color: #2c3e50;
     }
-
-    #nav {
-        padding: 30px;
-    }
-
-    #nav a {
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    #nav a.router-link-exact-active {
-        color: #42b983;
+    .variant {
+        color : #400c61f7;
     }
 </style>
