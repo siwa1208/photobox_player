@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div id="helloworld">
     <h1 style="margin-top: 5rem; text-align: center;">{{msg}}</h1>
-    <div class="card border-success mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 5rem;">
-            <div class="card-header bg-success" style="text-align: center"> Password cheeeeck !</div>
+    <div class="card border-secondary mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 5rem;">
+            <div class="card-header" style="text-align: center; background-color: purple; color: white;"> Password cheeeeck !</div>
             <div class="card-body text-dark">
                 <b-form @submit.prevent="goToPhotos">
                     <b-row class="my-5">
                         <b-col sm="4" style="margin-left : 27rem;">
                             <b-input v-model="password" type="password" id="text-password" aria-describedby="password-help-block" placeholder="Veuillez entrer votre mot de passe"></b-input>
                             <label></label>
-                            <b-button variant="success" type="submit">Valider</b-button>
+                            <b-button style="background-color: purple" type="submit">Valider</b-button>
                         </b-col>
                     </b-row>
                 </b-form>
