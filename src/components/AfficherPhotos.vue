@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <silent-box :gallery="gallery"></silent-box>
-        <button class="button is-success" v-on:click="fetchImage"> Chercher une images</button>
+        <button class="button is-success" v-on:click="fetchImage"> Chercher une image</button>
         <button class="button is-success" v-on:click="fetchImages"> Chercher des images</button>
     </div>
 </template>
@@ -12,8 +12,7 @@
     export default {
         methods: {
             fetchImage: function () {
-                axios
-                    .get('https://apiphotobox.tallium.tech/event/pictures/e0c003e624a09554e9a7578d19b5d7cf35c391a6100281347b31edeeaf91d697', {})
+                axios.get('https://apiphotobox.tallium.tech/event/pictures/e0c003e624a09554e9a7578d19b5d7cf35c391a6100281347b31edeeaf91d697', {})
                     .then(response => (this.gallery.push({
                         src: response.data.message,
                         description: 'pinche',
