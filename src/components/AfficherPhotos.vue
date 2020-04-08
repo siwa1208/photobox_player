@@ -13,7 +13,7 @@
         methods: {
             fetchImage: function () {
                 axios
-                    .get('https://dog.ceo/api/breeds/image/random', {})
+                    .get('https://apiphotobox.tallium.tech/event/pictures/e0c003e624a09554e9a7578d19b5d7cf35c391a6100281347b31edeeaf91d697', {})
                     .then(response => (this.gallery.push({
                         src: response.data.message,
                         description: 'pinche',
