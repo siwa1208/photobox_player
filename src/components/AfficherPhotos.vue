@@ -11,11 +11,10 @@
     export default {
         methods: {
             fetchImages() {
-                axios.get('https://apiphotobox.tallium.tech/event/pictures/65bcb6f364a12e8151ee3f2f72276e4c102b8066fde7142167497bc11963dc69', {
-                        //token : this.$store.state.token
-                    }).then(response => {
+                axios.get('https://apiphotobox.tallium.tech/event/pictures/'+ this.$store.state.token, {})
+                .then(response => {
                         let Images = response.data.pictures
-                        //this.$store.commit('getImages', Images)
+                        console.log(this.$store.commit(response.data.pictures))
                         Images.forEach(Image => {
                             this.gallery.push({
                                 src: 'https://apiphotobox.tallium.tech' + Image.URI,
@@ -30,7 +29,8 @@
         },
         data() {
             return {
-                gallery: []
+                gallery: [],
+                token: this.$store.state.token
             }
         }
     }
