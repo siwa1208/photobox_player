@@ -1,6 +1,9 @@
 <template>
     <div id="photos">
         <silent-box :gallery="gallery"></silent-box>
+        <li class="list-group-item" v-for="comment in this.comments" v-bind:key="comment">
+            {{comment.pseudo}} {{comment.date}} {{comment.comment}}
+        </li>
     </div>
 </template>
 
@@ -23,14 +26,31 @@
                     }).catch(error => {
                     alert(error)
                 })
+            },
+            getAllComments() {
+                axios.get('https://apiphotobox.tallium.tech/player/event/comment/' + this.$route.params.token, {})
+                    .then(response => {
+                        let Comments = response.data
+                        Comments.forEach(Comment => {
+                            this.comments.push({
+                                comment: Comment.comment,
+                                pseudo: Comment.pseudo,
+                                date: Comment.date
+                            })
+                        })
+                    }).catch(error => {
+                    alert(error)
+                })
             }
         },
         data() {
             return {
-                gallery: []
+                gallery: [],
+                comments: []
             }
         }, mounted() {
             this.fetchImages();
+            this.getAllComments();
         }
     }
 </script>
