@@ -1,6 +1,5 @@
 <template>
     <div id="photos">
-        <b-button variant="success" v-on:click="fetchImages"> Chercher une image</b-button>
         <silent-box :gallery="gallery"></silent-box>
     </div>
 </template>
@@ -11,10 +10,9 @@
     export default {
         methods: {
             fetchImages() {
-                axios.get('https://apiphotobox.tallium.tech/event/pictures/'+ this.$store.state.token, {})
-                .then(response => {
+                axios.get('https://apiphotobox.tallium.tech/event/pictures/' + this.$route.params.token, {})
+                    .then(response => {
                         let Images = response.data.pictures
-                        console.log(this.$store.commit(response.data.pictures))
                         Images.forEach(Image => {
                             this.gallery.push({
                                 src: 'https://apiphotobox.tallium.tech' + Image.URI,
@@ -23,8 +21,8 @@
                             })
                         })
                     }).catch(error => {
-                        console.log(error.response)
-                    })
+                    alert(error)
+                })
             }
         },
         data() {
@@ -32,6 +30,8 @@
                 gallery: [],
                 token: this.$store.state.token
             }
+        }, mounted() {
+            this.fetchImages();
         }
     }
 </script>
