@@ -41,16 +41,42 @@
                     }).catch(error => {
                     alert(error)
                 })
+            },
+            startInterval() {
+                setInterval(() => {
+                    axios.get('https://apiphotobox.tallium.tech/player/event/comment/' + this.$route.params.token, {})
+                        .then(response => {
+                            let Comments = response.data;
+                            if (this.comments.length !== Comments.length) {
+                                let counter = 0;
+                                for (let i = 0; i < this.comments.length; i++) {
+                                    counter++;
+                                }
+                                for (let j = counter; j < Comments.length; j++) {
+                                    let Array = (Object.values(Comments[j]));
+                                    this.comments.push({
+                                        comment: Array[1],
+                                        pseudo: Array[0],
+                                        date: Array[2]
+                                    })
+                                }
+                            }
+                        }).catch(error => {
+                        alert(error)
+                    })
+                }, 10000);
             }
         },
         data() {
             return {
                 gallery: [],
-                comments: []
+                comments: [],
             }
         }, mounted() {
             this.fetchImages();
             this.getAllComments();
+        }, created() {
+            this.startInterval();
         }
     }
 </script>
