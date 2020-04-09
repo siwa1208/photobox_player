@@ -2,7 +2,7 @@
     <div id="helloworld">
         <h1 style="margin-top: 5rem; text-align: center;">{{msg}}</h1>
         <div class="card border-secondary mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 5rem;">
-            <div class="card-header" style="text-align: center; background-color: purple; color: white;"> Password
+            <div class="card-header" style="text-align: center; background-color: #3d103e; color: white;"> Password
                 cheeeeck !
             </div>
             <div class="card-body text-dark">
@@ -13,7 +13,7 @@
                                      aria-describedby="password-help-block"
                                      placeholder="Veuillez entrer votre mot de passe"></b-input>
                             <label></label>
-                            <b-button style="background-color: purple" type="submit">Valider</b-button>
+                            <b-button style="background-color: #3d103e" type="submit">Valider</b-button>
                         </b-col>
                     </b-row>
                 </b-form>

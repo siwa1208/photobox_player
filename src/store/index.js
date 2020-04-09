@@ -13,7 +13,7 @@ export default new Vuex.Store({
     plugins: [vp.plugin],
 
     state: {
-        images : '',
+        comments : '',
         token : ''
     },
 
@@ -22,8 +22,8 @@ export default new Vuex.Store({
             state.token = token
         },
         
-        getImages(state, images){
-            state.images = images
+        getCommentaires(state, commentaires){
+            state.comments = commentaires
           }
     },
 

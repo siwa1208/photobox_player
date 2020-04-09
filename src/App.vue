@@ -1,6 +1,6 @@
 <template>
     <div id="app">    
-            <b-navbar style="background-color: purple; margin-bottom: 2%;">
+            <b-navbar style="background-color: #3d103e; margin-bottom: 2%;">
                 <b-navbar-nav>
                     <b-nav-item to="/">Home</b-nav-item>
                     <b-nav-item to="/Photos">Photos</b-nav-item>
