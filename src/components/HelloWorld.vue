@@ -1,19 +1,20 @@
 <template>
     <div id="helloworld">
-        <h1 style="margin-top: 5rem; text-align: center;">{{msg}}</h1>
-        <div class="card border-secondary mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 5rem;">
-            <div class="card-header" style="text-align: center; background-color: #3d103e; color: white;"> Password
-                cheeeeck !
+        <h1 style="margin-top: 2%; text-align: center;">{{msg}}</h1>
+        <img src="../assets/photobox_logo.png" width="150" height="150" style="margin-left:45%; margin-top: 2%" >
+        <div class="card border-secondary mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 3rem;">
+            <div class="card-header" style="text-align: center; background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472); color: white;"> Player password !
             </div>
             <div class="card-body text-dark">
                 <b-form @submit.prevent="goToPhotos">
                     <b-row class="my-5">
-                        <b-col sm="4" style="margin-left : 27rem;">
+                        <b-col sm="4" style="margin-left : 35%;">
                             <b-input v-model="password" type="password" id="text-password"
-                                     aria-describedby="password-help-block"
                                      placeholder="Veuillez entrer votre mot de passe"></b-input>
                             <label></label>
-                            <b-button style="background-color: #3d103e" type="submit">Valider</b-button>
+                            <div class="row justify-content-center">
+                                <b-button style="background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472);" type="submit">Valider</b-button>
+                            </div>
                         </b-col>
                     </b-row>
                 </b-form>

@@ -1,17 +1,31 @@
-<template>
+<template style="background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472);">
     <div id="photos">
-        <silent-box :gallery="gallery"></silent-box>
-        <b-list-group v-for="comment in this.comments" :key="comment" role="tablist">
-                <b-list-group-item style="background:#3d103e; color:white;" role="tab">Pseudo : {{comment.pseudo}}</b-list-group-item>
-                <b-list-group-item style="background:#3d103e; color:white;" role="tab">Comment : {{comment.comment}}</b-list-group-item>
-                <b-list-group-item style="background:#3d103e; color:white;" role="tab">Date : {{comment.date}}</b-list-group-item>
-        </b-list-group>
+        <div style="text-align: center; margin-bottom : 3%">
+            <silent-box :gallery="gallery"></silent-box>
+        </div>
+        <h5 class="mt-0 mb-1"></h5>
+        <b-card title="List of comments"></b-card>
+        <b-media class="my-4" v-for="comment in this.comments" v-bind:key="comment" >
+            <template v-slot:aside>
+                <b-img blank blank-color="#cba" width="64" alt="placeholder"></b-img>
+            </template>
+            <p class="mb-0">
+                Pseudo : {{comment.pseudo}}
+            </p>
+            <p class="mb-0">
+                Commentaire : {{comment.comment}}
+            </p>
+            <p class="mb-0">
+                Date : {{comment.date}}
+            </p>
+        </b-media>
+        
     </div>
 </template>
 
 <script>
-    import axios from "axios";
-     let myOuterText = 55
+    import axios from "axios"
+
     export default {
         methods: {
             fetchImages() {
@@ -27,60 +41,61 @@
                         })
                     }).catch(error => {
                         console.log(error.response)
-                        alert("Cet évènement ne possède aucune photos pour l'instant.")
+                        //alert("Cet évènement ne possède aucune photos pour l'instant.")
                 })
             },
-
-            fetchCommentaires(){
+            getAllComments() {
                 axios.get('https://apiphotobox.tallium.tech/player/event/comment/' + this.$route.params.token, {})
                     .then(response => {
                         let Comments = response.data
                         Comments.forEach(Comment => {
                             this.comments.push({
-                                pseudo : Comment.pseudo,
-                                comment : Comment.comment,
-                                date : Comment.date
+                                comment: Comment.comment,
+                                pseudo: Comment.pseudo,
+                                date: Comment.date
                             })
                         })
                     }).catch(error => {
                         console.log(error.response)
-                        alert("Cet évènement ne possède aucun commentaire pour l'instant.")
+                    //alert("Aucun commentaire pour cet évènement.")
                 })
             },
-
-            /*todo: function(){           
-                this.intervalid1 = setInterval(function(){
-                    this.fetchCommentaires = ((Math.random() * 100).toFixed(2))+'%';
-                    console.log (this.fetchCommentaires);
-                }.bind(this), 5000);
-            }*/
             startInterval() {
-                   setInterval(() => {
-                        this.fetchCommentaires = myOuterText + 1
-                   }, 5000);
-                }
+                setInterval(() => {
+                    axios.get('https://apiphotobox.tallium.tech/player/event/comment/' + this.$route.params.token, {})
+                        .then(response => {
+                            let Comments = response.data;
+                            if (this.comments.length !== Comments.length) {
+                                let counter = 0;
+                                for (let i = 0; i < this.comments.length; i++) {
+                                    counter++;
+                                }
+                                for (let j = counter; j < Comments.length; j++) {
+                                    let Array = (Object.values(Comments[j]));
+                                    this.comments.push({
+                                        comment: Array[1],
+                                        pseudo: Array[0],
+                                        date: Array[2]
+                                    })
+                                }
+                            }
+                        }).catch(error => {
+                            console.log(error.response)
+                        //alert("Une erreur s'est produite lors de l'affichage.")
+                    })
+                }, 10000);
+            }
         },
         data() {
             return {
                 gallery: [],
                 comments: [],
-                intervalid1: 0
             }
         }, mounted() {
             this.fetchImages();
-            this.fetchCommentaires()
+            this.getAllComments();
+        }, created() {
+            this.startInterval();
         }
     }
 </script>
-
-<style>
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>
-

@@ -13,11 +13,6 @@ const routes = [
         path: '/Photos',
         name: 'photos',
         component: () => import('../views/Photos.vue')
-    },
-    {
-        path: '/Events',
-        name: 'events',
-        component: () => import('../views/Events.vue')
     }
 ]
 
