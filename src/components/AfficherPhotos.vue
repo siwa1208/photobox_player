@@ -1,7 +1,7 @@
 <template style="background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472);">
     <div id="photos">
         <div style="text-align: center;">
-            <silent-box :gallery="gallery" style="margin-bottom : 2%"></silent-box>
+            <silent-box :gallery="gallery" style="margin-bottom: 2%"></silent-box>
         </div>
         <h5 class="mt-0 mb-1"></h5>
         <b-card title="List of comments"></b-card>
