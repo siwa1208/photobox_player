@@ -41,7 +41,7 @@
                         })
                     }).catch(error => {
                         console.log(error.response)
-                        //alert("Cet évènement ne possède aucune photos pour l'instant.")
+                        alert("Cet évènement ne possède aucune photos pour l'instant.")
                 })
             },
             getAllComments() {
@@ -57,7 +57,7 @@
                         })
                     }).catch(error => {
                         console.log(error.response)
-                    //alert("Aucun commentaire pour cet évènement.")
+                    alert("Aucun commentaire pour cet évènement.")
                 })
             },
             startInterval() {
