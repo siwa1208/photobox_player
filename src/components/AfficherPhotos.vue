@@ -5,7 +5,7 @@
         </div>
         <h5 class="mt-0 mb-1"></h5>
         <b-card title="List of comments"></b-card>
-        <b-media class="my-4" v-for="comment in this.comments" v-bind:key="comment" >
+        <b-media class="my-4" v-for="comment in this.comments" v-bind:key="comment">
             <template v-slot:aside>
                 <b-img blank blank-color="#cba" width="64" alt="placeholder"></b-img>
             </template>
@@ -19,7 +19,7 @@
                 Date : {{comment.date}}
             </p>
         </b-media>
-        
+
     </div>
 </template>
 
@@ -40,8 +40,8 @@
                             })
                         })
                     }).catch(error => {
-                        console.log(error.response)
-                        alert("Cet évènement ne possède aucune photos pour l'instant.")
+                    console.log(error.response)
+                    alert("Cet évènement ne possède aucune photos pour l'instant.")
                 })
             },
             getAllComments() {
@@ -56,11 +56,11 @@
                             })
                         })
                     }).catch(error => {
-                        console.log(error.response)
+                    console.log(error.response)
                     alert("Aucun commentaire pour cet évènement.")
                 })
             },
-            startInterval() {
+            startIntervalComments() {
                 setInterval(() => {
                     axios.get('https://apiphotobox.tallium.tech/player/event/comment/' + this.$route.params.token, {})
                         .then(response => {
@@ -80,8 +80,31 @@
                                 }
                             }
                         }).catch(error => {
-                            console.log(error.response)
-                        //alert("Une erreur s'est produite lors de l'affichage.")
+                        console.log(error.response)
+                    })
+                }, 10000);
+            },
+            startIntervalImages() {
+                setInterval(() => {
+                    axios.get('https://apiphotobox.tallium.tech/event/pictures/' + this.$route.params.token, {})
+                        .then(response => {
+                            let Images = response.data;
+                            if (this.gallery.length !== Images.pictures.length) {
+                                let counter = 0;
+                                for (let i = 0; i < this.gallery.length; i++) {
+                                    counter++;
+                                }
+                                for (let j = counter; j < Images.pictures.length; j++) {
+                                    let Array = (Object.values(Images.pictures[j]));
+                                    this.gallery.push({
+                                        src: 'https://apiphotobox.tallium.tech' + Array[1],
+                                        description: Array[0],
+                                        thumbnailWidth: '220px'
+                                    });
+                                }
+                            }
+                        }).catch(error => {
+                        console.log(error.response)
                     })
                 }, 10000);
             }
@@ -95,7 +118,8 @@
             this.fetchImages();
             this.getAllComments();
         }, created() {
-            this.startInterval();
+            this.startIntervalComments();
+            this.startIntervalImages();
         }
     }
 </script>

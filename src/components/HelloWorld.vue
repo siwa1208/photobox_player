@@ -1,9 +1,11 @@
 <template>
     <div id="helloworld">
         <h1 style="margin-top: 2%; text-align: center;">{{msg}}</h1>
-        <img src="../assets/photobox_logo.png" width="150" height="150" style="margin-left:45%; margin-top: 2%" >
+        <img src="../assets/photobox_logo.png" width="150" height="150" style="margin-left:45%; margin-top: 2%">
         <div class="card border-secondary mb-3" style="max-width: 80%; margin-left: 10rem; margin-top: 3rem;">
-            <div class="card-header" style="text-align: center; background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472); color: white;"> Player password !
+            <div class="card-header"
+                 style="text-align: center; background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472); color: white;">
+                Player password !
             </div>
             <div class="card-body text-dark">
                 <b-form @submit.prevent="goToPhotos">
@@ -13,7 +15,10 @@
                                      placeholder="Veuillez entrer votre mot de passe"></b-input>
                             <label></label>
                             <div class="row justify-content-center">
-                                <b-button style="background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472);" type="submit">Valider</b-button>
+                                <b-button
+                                        style="background: linear-gradient(200deg, #BD5DCD,#824AA7,#604591,#3F2D86,#362472);"
+                                        type="submit">Valider
+                                </b-button>
                             </div>
                         </b-col>
                     </b-row>
