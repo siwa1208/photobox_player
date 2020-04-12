@@ -84,6 +84,31 @@
                         //alert("Une erreur s'est produite lors de l'affichage.")
                     })
                 }, 10000);
+            },
+            startIntervalImg() {
+                setInterval(() => {
+                    axios.get('https://apiphotobox.tallium.tech/event/pictures/' + this.$route.params.token, {})
+                        .then(response => {
+                            let Images = response.data.pictures;
+                            if (this.gallery.length !== Images.length) {
+                                let counter = 0;
+                                for (let i = 0; i < this.gallery.length; i++) {
+                                    counter++;
+                                }
+                                for (let j = counter; j < Images.length; j++) {
+                                    let Array = (Object.values(Images[j]));
+                                    this.gallery.push({
+                                        src: Array[1],
+                                        description: Array[2],
+                                        thumbnailWidth: Array[0]
+                                    })
+                                }
+                            }
+                        }).catch(error => {
+                            console.log(error.response)
+                        //alert("Une erreur s'est produite lors de l'affichage.")
+                    })
+                }, 10000);
             }
         },
         data() {
@@ -96,6 +121,7 @@
             this.getAllComments();
         }, created() {
             this.startInterval();
+            this.startIntervalImg();
         }
     }
 </script>
