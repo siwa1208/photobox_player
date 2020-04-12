@@ -12,7 +12,7 @@
                     <b-row class="my-5">
                         <b-col sm="4" style="margin-left : 35%;">
                             <b-input v-model="password" type="password" id="text-password"
-                                     placeholder="Veuillez entrer votre mot de passe"></b-input>
+                                     placeholder="Enter the player pass please"></b-input>
                             <label></label>
                             <div class="row justify-content-center">
                                 <b-button
